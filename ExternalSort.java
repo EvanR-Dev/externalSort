@@ -35,6 +35,32 @@ public class ExternalSort {
 			String str = null;
 			int[] arr;
 			
-			
+			// read all numbers of T1
+			while (input.hasNextInt()) {
+				str = read(input, str, runsize);	// read 4 values and store in arr
+				arr = convertToArr(str);			// Convert str to arr
+	}
+	
+	private static int[] convertToArr(String s) {
+		String[] strArr = s.split(" ");	// " " token
+		int[] arr = new int[strArr.length];	// create array
+		
+		// str to int arr
+		for (int i = 0; i < arr.length; i++)
+			arr[i] = Integer.parseInt(strArr[i]);
+		
+		return arr;
+	}
+	
+	public static String read(Scanner input, String str, int runsize) {
+		str = "";	// Initialize string when making arr
+		int numElem = 0;	// count elements
+		
+		while (input.hasNextInt() && numElem < runsize) {
+			str += input.nextInt() + " ";
+			numElem++;
+			numValues++;
+		}
+		return str;
 	}
 }

@@ -39,6 +39,10 @@ public class ExternalSort {
 			while (input.hasNextInt()) {
 				str = read(input, str, runsize);	// read 4 values and store in arr
 				arr = convertToArr(str);			// Convert str to arr
+				Arrays.sort(arr);					// Sort arr
+				str = convertToStr(arr);	// Convert sorted arr to str
+				t3Write.print(str);			// Write sorted arr to file t3
+			}
 	}
 	
 	private static int[] convertToArr(String s) {
@@ -62,5 +66,14 @@ public class ExternalSort {
 			numValues++;
 		}
 		return str;
+	}
+		
+	private static String convertToStr(int[] a) {
+		StringBuilder sb = new StringBuilder();
+		for (Integer i : a) {
+			sb.append(i);
+			sb.append(" ");
+		}
+		return sb.toString();
 	}
 }

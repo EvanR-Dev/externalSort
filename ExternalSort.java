@@ -42,7 +42,19 @@ public class ExternalSort {
 				Arrays.sort(arr);					// Sort arr
 				str = convertToStr(arr);	// Convert sorted arr to str
 				t3Write.print(str);			// Write sorted arr to file t3
+				
+				str = read(input, str, runsize);	// read 4 values and store in arr
+				arr = convertToArr(str);			// Convert str to arr
+				Arrays.sort(arr);					// Sort arr
+				str = convertToStr(arr);	// Convert sorted arr to str
+				t4Write.print(str);			// Write sorted arr to file t4
 			}
+			// close t3 and t4 after writing
+			t3Write.close();
+			t4Write.close();
+			
+			// Get number of runs depending if even
+			int numRuns = getNumRuns(runsize);
 	}
 	
 	private static int[] convertToArr(String s) {

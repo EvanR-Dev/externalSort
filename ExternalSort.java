@@ -55,6 +55,27 @@ public class ExternalSort {
 			
 			// Get number of runs depending if even
 			int numRuns = getNumRuns(runsize);
+			
+			for (int i = 0; i < numRuns; i++) {
+				if (i % 2 == 0) {
+					Scanner t3Read = new Scanner(t3);
+					Scanner t4Read = new Scanner(t4);
+					boolean print = false;
+					
+					PrintWriter t1Write = new PrintWriter(t1.toString());
+					PrintWriter t2Write = new PrintWriter(t2.toString());
+					
+					while (t3Read.hasNextInt()) {
+						//str = read(t3Read, str, (int)(runsize * Math.pow(2, i)));
+						int count = 0;
+						str = "";
+						str = read(t3Read, str, (int)(runsize * Math.pow(2,  i)));
+//						while (t3Read.hasNextInt() && count < runsize * Math.pow(2,  i)) {
+//							str += t3Read.nextInt() + " ";
+//							count++;
+//						}
+				}
+			}
 	}
 	
 	private static int[] convertToArr(String s) {

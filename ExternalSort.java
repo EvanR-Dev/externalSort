@@ -85,8 +85,17 @@ public class ExternalSort {
 						else t2Write.print(str);
 						// set other tap
 						print = !print;
+					}
+					t1Write.close();
+					t2Write.close();
 				}
+				else {
+					
+				}
+				// close all taps
+				
 			}
+		}
 	}
 	
 	private static int[] convertToArr(String s) {

@@ -90,7 +90,21 @@ public class ExternalSort {
 					t2Write.close();
 				}
 				else {
-					
+					str = "";
+					// open input tap files T1 and T2
+					Scanner t1Read = new Scanner(t1);
+					Scanner t2Read = new Scanner(t2);
+					boolean print = false;
+					// open outputfiles tap T3 and T4
+					PrintWriter tap3 = new PrintWriter(t3.toString());
+					PrintWriter tap4 = new PrintWriter(t4.toString());
+					// loop until tap1 has next input
+					while (t1Read.hasNextInt()) {
+						int count = 0;
+						while (t1Read.hasNextInt() && count < runsize * Math.pow(2,  i)) {
+							str += t1Read.nextInt() + " ";
+							count++;
+						}
 				}
 				// close all taps
 				

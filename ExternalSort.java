@@ -105,9 +105,25 @@ public class ExternalSort {
 							str += t1Read.nextInt() + " ";
 							count++;
 						}
+						int counts = 0;
+						while (t2Read.hasNextInt() && counts < runsize * Math.pow(2,  i)) {
+							str += t2Read.nextInt() + " ";
+							counts++;
+						}
+						arr = convertToArr(str);	// Convert str to arr
+						Arrays.sort(arr);			// Sort arr
+						str = convertToStr(arr);	// Convert sorted arr to str
+						// print data on tap1 or tap2 based on the condition
+						if (!print)
+						tap3.print(str);
+						else
+						tap4.print(str);
+						// set other tap
+						print = !print;
 				}
 				// close all taps
-				
+				tap3.close();
+				tap4.close();
 			}
 		}
 	}

@@ -113,11 +113,11 @@ public class ExternalSort {
 						arr = convertToArr(str);	// Convert str to arr
 						Arrays.sort(arr);			// Sort arr
 						str = convertToStr(arr);	// Convert sorted arr to str
+						
 						// print data on tap1 or tap2 based on the condition
-						if (!print)
-						tap3.print(str);
-						else
-						tap4.print(str);
+						if (!print) tap3.print(str);
+						else tap4.print(str);
+						
 						// set other tap
 						print = !print;
 				}
@@ -126,6 +126,7 @@ public class ExternalSort {
 				tap4.close();
 			}
 		}
+			return t1;
 	}
 	
 	private static int[] convertToArr(String s) {
@@ -137,6 +138,13 @@ public class ExternalSort {
 			arr[i] = Integer.parseInt(strArr[i]);
 		
 		return arr;
+	}
+		
+	private static int getNumRuns(int runsize) {
+		if (numValues % (2 * runsize) == 0)
+			return numValues / (2 * runsize);
+		
+		return numValues / (2 * runsize) + 1;
 	}
 	
 	public static String read(Scanner input, String str, int runsize) {

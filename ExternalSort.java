@@ -56,6 +56,7 @@ public class ExternalSort {
 			// Get number of runs depending if even
 			int numRuns = getNumRuns(runsize);
 			
+			
 			for (int i = 0; i < numRuns; i++) {
 				if (i % 2 == 0) {
 					Scanner t3Read = new Scanner(t3);
@@ -88,8 +89,7 @@ public class ExternalSort {
 					}
 					t1Write.close();
 					t2Write.close();
-				}
-				else {
+				} else {
 					str = "";
 					// open input tap files T1 and T2
 					Scanner t1Read = new Scanner(t1);
@@ -105,6 +105,7 @@ public class ExternalSort {
 							str += t1Read.nextInt() + " ";
 							count++;
 						}
+						
 						int counts = 0;
 						while (t2Read.hasNextInt() && counts < runsize * Math.pow(2,  i)) {
 							str += t2Read.nextInt() + " ";
@@ -113,20 +114,41 @@ public class ExternalSort {
 						arr = convertToArr(str);	// Convert str to arr
 						Arrays.sort(arr);			// Sort arr
 						str = convertToStr(arr);	// Convert sorted arr to str
-						
 						// print data on tap1 or tap2 based on the condition
-						if (!print) tap3.print(str);
-						else tap4.print(str);
-						
+						if (!print)
+						tap3.print(str);
+						else
+						tap4.print(str);
 						// set other tap
 						print = !print;
+					}
+					tap3.close();
+					tap4.close();
 				}
-				// close all taps
-				tap3.close();
-				tap4.close();
 			}
 		}
-			return t1;
+		catch (Exception e) {
+			System.out.println("Read: " + t1);
+			System.out.println("Write: " + t3 + " " + t4);
+			System.out.println(e);
+		}
+		return t1;
+	}
+	
+	private static int getNumRuns(int runsize) {
+		if (numValues % (2 * runsize) == 0)
+			return numValues / (2 * runsize);
+		
+		return numValues / (2 * runsize) + 1;
+	}
+	
+	private static String convertToStr(int[] a) {
+		StringBuilder sb = new StringBuilder();
+		for (Integer i : a) {
+			sb.append(i);
+			sb.append(" ");
+		}
+		return sb.toString();
 	}
 	
 	private static int[] convertToArr(String s) {
@@ -139,13 +161,6 @@ public class ExternalSort {
 		
 		return arr;
 	}
-		
-	private static int getNumRuns(int runsize) {
-		if (numValues % (2 * runsize) == 0)
-			return numValues / (2 * runsize);
-		
-		return numValues / (2 * runsize) + 1;
-	}
 	
 	public static String read(Scanner input, String str, int runsize) {
 		str = "";	// Initialize string when making arr
@@ -157,14 +172,5 @@ public class ExternalSort {
 			numValues++;
 		}
 		return str;
-	}
-		
-	private static String convertToStr(int[] a) {
-		StringBuilder sb = new StringBuilder();
-		for (Integer i : a) {
-			sb.append(i);
-			sb.append(" ");
-		}
-		return sb.toString();
 	}
 }
